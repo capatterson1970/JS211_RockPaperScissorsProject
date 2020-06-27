@@ -12,7 +12,11 @@ const rl = readline.createInterface({
 });
 
 // the function that will be called by the unit test below
-const rockPaperScissors = (hand1, hand2) => {
+const rockPaperScissors = (handA, handB) => {
+  let hand1 = handA.trim();
+  let hand2 = handB.trim();
+
+
   if(hand1.toLowerCase() === hand2.toLowerCase()){
     return "It's a tie!"
   }
@@ -26,10 +30,10 @@ const rockPaperScissors = (hand1, hand2) => {
   }
   else if(hand1.toLowerCase() === 'paper'){
     if(hand2.toLowerCase() === 'rock'){
-      return "Hand two wins!"
+      return "Hand one wins!"
     }
     else {
-      return "Hand one wins!"
+      return "Hand two wins!"
     }
   }
   else if(hand1.toLowerCase() === 'scissors'){
