@@ -13,35 +13,44 @@ const rl = readline.createInterface({
 
 // the function that will be called by the unit test below
 const rockPaperScissors = (handA, handB) => {
-  let hand1 = handA.trim();
-  let hand2 = handB.trim();
+  let hand1 = handA.trim().toLowerCase();
+  let hand2 = handB.trim().toLowerCase();
 
-
-  if(hand1.toLowerCase() === hand2.toLowerCase()){
+  //if(hand1)
+  if(hand1 === hand2){
     return "It's a tie!"
   }
-  else if(hand1.toLowerCase() === 'rock'){
-    if(hand2.toLowerCase() === 'paper'){
+  else if(hand1 === 'rock'){
+    if(hand2 === 'paper'){
       return "Hand two wins!"
     }
-    else {
+    else if(hand2 === 'scissors') {
       return "Hand one wins!"
+    }
+    else {
+      return "Incorrect Entry!!"
     }
   }
-  else if(hand1.toLowerCase() === 'paper'){
-    if(hand2.toLowerCase() === 'rock'){
+  else if(hand1 === 'paper'){
+    if(hand2 === 'rock'){
       return "Hand one wins!"
     }
-    else {
+    else if(hand2 === 'scissors') {
       return "Hand two wins!"
+    }
+    else {
+      return "Incorrect Entry!!"
     }
   }
-  else if(hand1.toLowerCase() === 'scissors'){
-    if(hand2.toLowerCase() === 'rock'){
+  else if(hand1 === 'scissors'){
+    if(hand2 === 'rock'){
       return "Hand two wins!"
     }
-    else {
+    else if(hand2 === 'paper') {
       return "Hand one wins!"
+    }
+    else {
+      return "Incorrect Entry!!"
     }
   }
   else {
@@ -85,6 +94,10 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand two wins!");
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
+    });
+    it('should expect rock, paper, or scissors input',() => {
+      assert.equal(rockPaperScissors('', ' paper '), "Incorrect Entry!!")
+      assert.equal(rockPaperScissors(' paper ', ''), "Incorrect Entry!!")
     });
   });
 } else {
